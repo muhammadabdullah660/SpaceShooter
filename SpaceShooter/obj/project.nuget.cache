@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zv0L/ClX2qo2v2yP6CArbPhE7+hGy1RFAc01nXTwbT9d/9IMWL1UQ4t/Edr1mRoh+hJ/pZ6XRZYvy/p89cveJA==",
+  "success": true,
+  "projectFilePath": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\ezinput\\1.3.2\\ezinput.1.3.2.nupkg.sha512"
+  ],
+  "logs": []
+}

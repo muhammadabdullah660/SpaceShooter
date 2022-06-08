@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj": {}
+  },
+  "projects": {
+    "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj",
+        "projectName": "SpaceShooter",
+        "projectPath": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "Https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "EZInput": {
+              "target": "Package",
+              "version": "[1.3.2, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

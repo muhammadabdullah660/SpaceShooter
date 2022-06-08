@@ -1,0 +1,120 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "EZInput/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "EZInput/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "EZInput/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "EZInput/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EZInput.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EZInput/1.3.2": {
+      "sha512": "/upsIA5CsMN/AEWRV/Fu2UAilOfCIPMEJxCyx00qaChqJwt4f6q2OPPLWmluUUE2hmuKn035BoV4/kItbb+CXQ==",
+      "type": "package",
+      "path": "ezinput/1.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ezinput.1.3.2.nupkg.sha512",
+        "ezinput.nuspec",
+        "lib/netstandard2.0/EZInput.dll",
+        "lib/netstandard2.0/EZInput.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "EZInput >= 1.3.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\hp\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj",
+      "projectName": "SpaceShooter",
+      "projectPath": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\SpaceShooter.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "D:\\UET\\Second Semester\\OOP Lab\\Week12\\SpaceShooter\\SpaceShooter\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "Https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "EZInput": {
+            "target": "Package",
+            "version": "[1.3.2, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

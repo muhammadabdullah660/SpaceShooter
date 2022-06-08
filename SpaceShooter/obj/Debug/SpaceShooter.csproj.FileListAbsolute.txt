@@ -1,0 +1,12 @@
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\bin\Debug\SpaceShooter.exe.config
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\bin\Debug\SpaceShooter.exe
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\bin\Debug\SpaceShooter.pdb
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\bin\Debug\EZInput.dll
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.Form1.resources
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.Properties.Resources.resources
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.GenerateResource.cache
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.CoreCompileInputs.cache
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.CopyComplete
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.exe
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.pdb
+D:\UET\Second Semester\OOP Lab\Week12\SpaceShooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.AssemblyReference.cache
