@@ -83,16 +83,6 @@ namespace SpaceShooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap enemyGreen1 {
-            get {
-                object obj = ResourceManager.GetObject("enemyGreen1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap enemyRed4 {
             get {
                 object obj = ResourceManager.GetObject("enemyRed4", resourceCulture);
@@ -103,9 +93,29 @@ namespace SpaceShooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap laserBlue09 {
+            get {
+                object obj = ResourceManager.GetObject("laserBlue09", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap laserRed01 {
             get {
                 object obj = ResourceManager.GetObject("laserRed01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laserRed09 {
+            get {
+                object obj = ResourceManager.GetObject("laserRed09", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -124,14 +124,17 @@
   <data name="enemyBlue5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemyBlue5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemyGreen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemyGreen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="enemyRed4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemyRed4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="laserBlue09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laserBlue09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="laserRed01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\laserRed01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="laserRed09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laserRed09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="STEALER - cyberpunk puzzle-platformer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\STEALER - cyberpunk puzzle-platformer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -14,12 +14,19 @@ namespace SpaceShooter
     public partial class Form1 : Form
     {
         List<PictureBox> pbFires = new List<PictureBox>();
+        List<PictureBox> enemyFires = new List<PictureBox>();
+        List<PictureBox> enemies = new List<PictureBox>();
         Random rand = new Random();
         PictureBox enemyBlue;
         PictureBox enemyRed;
         PictureBox enemyBlack;
         string enemyBlueDirection = "MovingRight";
         string enemyRedDirection = "MovingLeft";
+        int enemyBlueTimeToFire;
+        int enemyBlueLastTimeToFire;
+        int enemyRedTimeToFire;
+        int enemyRedLastTimeToFire;
+        int enemySpeed;
         //string enemyBlackDirection = "";
         public Form1 ()
         {
@@ -30,10 +37,17 @@ namespace SpaceShooter
         {
             enemyBlue = createEnemy(SpaceShooter.Properties.Resources.enemyBlue5);
             enemyRed = createEnemy(SpaceShooter.Properties.Resources.enemyRed4);
-            enemyBlack = createEnemy(SpaceShooter.Properties.Resources.enemyBlack3);
+            //enemyBlack = createEnemy(SpaceShooter.Properties.Resources.enemyBlack3);
             addControlIntoForm(enemyBlue);
             addControlIntoForm(enemyRed);
-            addControlIntoForm(enemyBlack);
+            enemies.Add(enemyBlue);
+            enemies.Add(enemyRed);
+            // addControlIntoForm(enemyBlack);
+            enemyBlueTimeToFire = 90;
+            enemyBlueLastTimeToFire = 0;
+            enemyRedTimeToFire = 60;
+            enemyRedLastTimeToFire = 0;
+            enemySpeed = 20;
         }
 
         private void timeGameLoop_Tick (object sender , EventArgs e)
@@ -41,13 +55,80 @@ namespace SpaceShooter
             //UFO Movement
             ufoMovement();
             //Firing System
-            firingSystem();
+            if (Keyboard.IsKeyPressed(Key.Space))
+            {
+                createBullet();
+            }
+            enemyMovement(enemyBlue , ref enemyBlueDirection);
+            enemyMovement(enemyRed , ref enemyRedDirection);
+            // enemyMovementIntelli(enemyBlack);
             //Firing Bullets
+            fireBullet();
+            //Removing Bullets
+            removeBullet();
+            detectCollison();
+            //Enemy Bullets 
+            enemyRedLastTimeToFire++;
+            enemyBlueLastTimeToFire++;
+            if (enemyRedLastTimeToFire == enemyRedTimeToFire)
+            {
+                Image imgRedEnemyFire = SpaceShooter.Properties.Resources.laserRed09;
+                createEnemyBullet(imgRedEnemyFire , enemyRed);
+                enemyRedLastTimeToFire = 0;
+            }
+            if (enemyBlueLastTimeToFire == enemyBlueTimeToFire)
+            {
+                Image imgBlueEnemyFire = SpaceShooter.Properties.Resources.laserBlue09;
+                createEnemyBullet(imgBlueEnemyFire , enemyBlue);
+                enemyBlueLastTimeToFire = 0;
+            }
+
+
+            progressBar1.Left = pbUFO.Left;
+        }
+        private void detectCollison ()
+        {
+            foreach (PictureBox fire in pbFires)
+            {
+                foreach (PictureBox enemy in enemies)
+                {
+                    if (fire.Bounds.IntersectsWith(enemy.Bounds))
+                    {
+                        enemies.Remove(enemy);
+                        this.Controls.Remove(enemy);
+                        fire.Visible = false;
+                        break;
+                    }
+                }
+
+            }
+            foreach (PictureBox fire in enemyFires)
+            {
+
+                if (fire.Bounds.IntersectsWith(pbUFO.Bounds))
+                {
+                    if (progressBar1.Value >= 0)
+                    {
+                        progressBar1.Value -= 10;
+                    }
+
+                }
+
+            }
+        }
+        private void fireBullet ()
+        {
             foreach (PictureBox fire in pbFires)
             {
                 fire.Top -= 20;
             }
-            //Removing Bullets
+            foreach (PictureBox fire in enemyFires)
+            {
+                fire.Top += 20;
+            }
+        }
+        private void removeBullet ()
+        {
             for (int i = 0 ; i < pbFires.Count ; i++)
             {
                 if (pbFires[i].Bottom < 0)
@@ -55,24 +136,42 @@ namespace SpaceShooter
                     pbFires.RemoveAt(i);
                 }
             }
-            enemyMovement(enemyBlue , ref enemyBlueDirection);
-            enemyMovement(enemyRed , ref enemyRedDirection);
-            enemyMovementIntelli(enemyBlack);
+            for (int i = 0 ; i < enemies.Count ; i++)
+            {
+                if (enemies[i].Top >= this.Height || enemies[i].Visible == false)
+                {
+                    enemyFires.RemoveAt(i);
+                }
+            }
+
         }
-        public void ufoMovement ()
+        private void createBullet ()
+        {
+            Image imgRedFire = SpaceShooter.Properties.Resources.laserRed01;
+            PictureBox pbFire = firingSystem(imgRedFire , pbUFO);
+            addFireIntoList(pbFire , pbFires);
+            addControlIntoForm(pbFire);
+        }
+        private void createEnemyBullet (Image img , PictureBox source)
+        {
+            PictureBox enemyFire = firingSystemEnemy(img , source);
+            addFireIntoList(enemyFire , enemyFires);
+            addControlIntoForm(enemyFire);
+        }
+        private void ufoMovement ()
         {
             if (Keyboard.IsKeyPressed(Key.RightArrow) || Keyboard.IsKeyPressed(Key.D))
             {
-                if ((pbUFO.Left + pbUFO.Width < this.Width))
+                if ((pbUFO.Left + pbUFO.Width + 30 < this.Width))
                 {
-                    pbUFO.Left += 20;
+                    pbUFO.Left += enemySpeed;
                 }
             }
             if (Keyboard.IsKeyPressed(Key.LeftArrow) || Keyboard.IsKeyPressed(Key.A))
             {
-                if (pbUFO.Left > 0)
+                if (pbUFO.Left - 20 > 0)
                 {
-                    pbUFO.Left -= 20;
+                    pbUFO.Left -= enemySpeed;
 
                 }
             }
@@ -80,39 +179,49 @@ namespace SpaceShooter
             {
                 if (pbUFO.Top > 0)
                 {
-                    pbUFO.Top -= 20;
+                    pbUFO.Top -= enemySpeed;
                 }
             }
             if (Keyboard.IsKeyPressed(Key.DownArrow) || Keyboard.IsKeyPressed(Key.S))
             {
-                if (pbUFO.Top + pbUFO.Width + 10 < this.Height)
+                if (pbUFO.Top + pbUFO.Width + 30 < this.Height)
                 {
-                    pbUFO.Top += 20;
+                    pbUFO.Top += enemySpeed;
                 }
 
             }
         }
-        public void firingSystem ()
+        private PictureBox firingSystem (Image fireImage , PictureBox source)
         {
-            if (Keyboard.IsKeyPressed(Key.Space))
-            {
-                PictureBox pbFire = new PictureBox();
-                Image imgRedFire = SpaceShooter.Properties.Resources.laserRed01;
-                pbFire.Image = imgRedFire;
-                pbFire.Width = imgRedFire.Width;
-                pbFire.Height = imgRedFire.Height;
-                pbFire.BackColor = Color.Transparent;
-                //Location/Point
-                System.Drawing.Point fireLocation = new System.Drawing.Point();
-                fireLocation.X = pbUFO.Left + (pbUFO.Width / 2) - 5;
-                fireLocation.Y = pbUFO.Top;
-                pbFire.Location = fireLocation;
-                addFireIntoList(pbFire);
-                addControlIntoForm(pbFire);
 
-            }
+            PictureBox pbFire = new PictureBox();
+            pbFire.Image = fireImage;
+            pbFire.Width = fireImage.Width;
+            pbFire.Height = fireImage.Height;
+            pbFire.BackColor = Color.Transparent;
+            //Location/Point
+            System.Drawing.Point fireLocation = new System.Drawing.Point();
+            fireLocation.X = source.Left + (source.Width / 2) - 5;
+            fireLocation.Y = source.Top;
+            pbFire.Location = fireLocation;
+            return pbFire;
         }
-        public void enemyMovement (PictureBox enemy , ref string enemyDirection)
+        private PictureBox firingSystemEnemy (Image fireImage , PictureBox source)
+        {
+
+            PictureBox pbFire = new PictureBox();
+            pbFire.Image = fireImage;
+            pbFire.Width = fireImage.Width;
+            pbFire.Height = fireImage.Height;
+            pbFire.BackColor = Color.Transparent;
+            // Location/Point
+            // System.Drawing.Point fireLocation = new System.Drawing.Point();
+            pbFire.Left = source.Left + 45;
+            pbFire.Top = source.Top + 60;
+            //pbFire.Location = fireLocation;
+            return pbFire;
+        }
+        private void enemyMovement (PictureBox enemy , ref string enemyDirection)
         {
             if (enemyDirection == "MovingRight")
             {
@@ -131,7 +240,7 @@ namespace SpaceShooter
                 enemyDirection = "MovingRight";
             }
         }
-        public void enemyMovementIntelli (PictureBox enemy)
+        private void enemyMovementIntelli (PictureBox enemy)
         {
             /*if (enemy.Left > pbUFO.Left)
             {
@@ -150,11 +259,11 @@ namespace SpaceShooter
                  enemyDirection = "MovingRight";
              }*/
         }
-        public void addFireIntoList (PictureBox pbFire)
+        private void addFireIntoList (PictureBox pbFire , List<PictureBox> firesList)
         {
-            pbFires.Add(pbFire);
+            firesList.Add(pbFire);
         }
-        public void addControlIntoForm (Control item)
+        private void addControlIntoForm (Control item)
         {
             this.Controls.Add(item);
         }
