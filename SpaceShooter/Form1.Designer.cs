@@ -32,7 +32,7 @@ namespace SpaceShooter
             this.components = new System.ComponentModel.Container();
             this.pbUFO = new System.Windows.Forms.PictureBox();
             this.timeGameLoop = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progBarHealth = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbUFO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,13 +55,14 @@ namespace SpaceShooter
             this.timeGameLoop.Interval = 30;
             this.timeGameLoop.Tick += new System.EventHandler(this.timeGameLoop_Tick);
             // 
-            // progressBar1
+            // progBarHealth
             // 
-            this.progressBar1.Location = new System.Drawing.Point(278, 413);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(120, 10);
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Value = 100;
+            this.progBarHealth.Location = new System.Drawing.Point(278, 413);
+            this.progBarHealth.Name = "progBarHealth";
+            this.progBarHealth.Size = new System.Drawing.Size(120, 10);
+            this.progBarHealth.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progBarHealth.TabIndex = 1;
+            this.progBarHealth.Value = 100;
             // 
             // Form1
             // 
@@ -69,7 +70,7 @@ namespace SpaceShooter
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SpaceShooter.Properties.Resources.STEALER___cyberpunk_puzzle_platformer;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progBarHealth);
             this.Controls.Add(this.pbUFO);
             this.DoubleBuffered = true;
             this.Name = "Form1";
@@ -85,7 +86,7 @@ namespace SpaceShooter
 
         private System.Windows.Forms.PictureBox pbUFO;
         private System.Windows.Forms.Timer timeGameLoop;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progBarHealth;
     }
 }
 

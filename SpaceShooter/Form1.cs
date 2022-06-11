@@ -16,16 +16,19 @@ namespace SpaceShooter
         List<PictureBox> pbFires = new List<PictureBox>();
         List<PictureBox> enemyFires = new List<PictureBox>();
         List<PictureBox> enemies = new List<PictureBox>();
+        List<PictureBox> meteors = new List<PictureBox>();
         Random rand = new Random();
         PictureBox enemyBlue;
         PictureBox enemyRed;
-        PictureBox enemyBlack;
+        //PictureBox enemyBlack;
         string enemyBlueDirection = "MovingRight";
         string enemyRedDirection = "MovingLeft";
         int enemyBlueTimeToFire;
         int enemyBlueLastTimeToFire;
         int enemyRedTimeToFire;
         int enemyRedLastTimeToFire;
+        int meteorGenerationTime;
+        int meteorLastGenerationTime;
         int enemySpeed;
         //string enemyBlackDirection = "";
         public Form1 ()
@@ -42,11 +45,13 @@ namespace SpaceShooter
             addControlIntoForm(enemyRed);
             enemies.Add(enemyBlue);
             enemies.Add(enemyRed);
-            // addControlIntoForm(enemyBlack);
+            //addControlIntoForm(enemyBlack);
             enemyBlueTimeToFire = 90;
             enemyBlueLastTimeToFire = 0;
             enemyRedTimeToFire = 60;
             enemyRedLastTimeToFire = 0;
+            meteorGenerationTime = 30;
+            meteorLastGenerationTime = 0;
             enemySpeed = 20;
         }
 
@@ -61,7 +66,7 @@ namespace SpaceShooter
             }
             enemyMovement(enemyBlue , ref enemyBlueDirection);
             enemyMovement(enemyRed , ref enemyRedDirection);
-            // enemyMovementIntelli(enemyBlack);
+            //enemyMovementIntelli(enemyBlack);
             //Firing Bullets
             fireBullet();
             //Removing Bullets
@@ -82,9 +87,41 @@ namespace SpaceShooter
                 createEnemyBullet(imgBlueEnemyFire , enemyBlue);
                 enemyBlueLastTimeToFire = 0;
             }
+            meteorLastGenerationTime++;
+            if (meteorGenerationTime == meteorLastGenerationTime)
+            {
+                Image imgMeteor = SpaceShooter.Properties.Resources.meteorGrey_med1;
+                createMeteor(imgMeteor);
 
+                meteorLastGenerationTime = 0;
+            }
+            setPositionProgressBar();
+            isGameWin();
+            isGameOver();
 
-            progressBar1.Left = pbUFO.Left;
+        }
+        private void isGameWin ()
+        {
+            if (enemies.Count == 0)
+            {
+                timeGameLoop.Enabled = false;
+                MessageBox.Show("You Won");
+                this.Close();
+            }
+        }
+        private void isGameOver ()
+        {
+            if (progBarHealth.Value == 0)
+            {
+                timeGameLoop.Enabled = false;
+                MessageBox.Show("You Lost");
+                this.Close();
+            }
+        }
+        private void setPositionProgressBar ()
+        {
+            progBarHealth.Left = pbUFO.Left;
+            progBarHealth.Top = pbUFO.Top + pbUFO.Height + 3;
         }
         private void detectCollison ()
         {
@@ -107,9 +144,16 @@ namespace SpaceShooter
 
                 if (fire.Bounds.IntersectsWith(pbUFO.Bounds))
                 {
-                    if (progressBar1.Value >= 0)
+                    if (progBarHealth.Value > 0)
                     {
-                        progressBar1.Value -= 10;
+                        progBarHealth.Value -= 10;
+                        enemyFires.Remove(fire);
+                        this.Controls.Remove(fire);
+                        break;
+                    }
+                    else if (progBarHealth.Value == 0)
+                    {
+                        break;
                     }
 
                 }
@@ -124,7 +168,11 @@ namespace SpaceShooter
             }
             foreach (PictureBox fire in enemyFires)
             {
-                fire.Top += 20;
+                fire.Top += 10;
+            }
+            foreach (PictureBox meteor in meteors)
+            {
+                meteor.Top += 5;
             }
         }
         private void removeBullet ()
@@ -279,6 +327,19 @@ namespace SpaceShooter
             pbEnemy.BackColor = Color.Transparent;
             pbEnemy.Image = img;
             return pbEnemy;
+        }
+        private PictureBox createMeteor (Image img)
+        {
+            PictureBox pbMeteor = new PictureBox();
+            int left = rand.Next(30 , this.Width); ;
+            int top = rand.Next(5 , img.Height + 20); ;
+            pbMeteor.Left = left;
+            pbMeteor.Top = top;
+            pbMeteor.Height = img.Height;
+            pbMeteor.Width = img.Width;
+            pbMeteor.BackColor = Color.Transparent;
+            pbMeteor.Image = img;
+            return pbMeteor;
         }
     }
 }
